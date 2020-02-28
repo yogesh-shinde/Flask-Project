@@ -1,0 +1,64 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/success.css')}}" />
+</head>
+
+<body>
+  {% if emp %}
+  <center>
+    <h2>
+      Employee Detail
+    </h2>
+  </center>
+
+  <table align="center">
+    <tr>
+      <td>Employee Id :</td>
+      <td>{{ emp.eno }}</td>
+    </tr>
+    <tr>
+      <td>Name :</td>
+      <td>{{ emp.ename }}</td>
+    </tr>
+    <tr>
+      <td>User Name :</td>
+      <td>{{ emp.uname }}</td>
+    </tr>
+    <!-- <tr>
+      <td>Password Id :</td>
+      <td>{{ emp.pwd }}</td>
+    </tr> -->
+    <tr>
+      <td>Address :</td>
+      <td>{{ emp.addr }}</td>
+    </tr>
+  </table>
+
+  {% endif %}
+  <hr />
+
+  <table align="center">
+    {% if elst %}
+    <h1 align="center">Employee</h1>
+
+    {% for lst in elst %}
+
+    <tr>
+      <td>{{ lst.eno }}&nbsp;&nbsp;&nbsp;</td>
+      <td>{{ lst.ename }}&nbsp;&nbsp;&nbsp;</td>
+      <td>{{ lst.uname }}&nbsp;&nbsp;&nbsp;</td>
+      <td>{{ lst.pwd }}&nbsp;&nbsp;&nbsp;</td>
+      <td>{{ lst.addr }}&nbsp;&nbsp;&nbsp;</td>
+      <td>
+        <a href="/delete/{{ lst.eno }}"><button type="button">delete</button></a>
+      </td>
+      <td>
+        <a href="/edit/{{ lst.eno }}"><button type="button">edit</button></a>
+      </td>
+    </tr>
+    {% endfor %} {% endif %}
+  </table>
+</body>
+
+</html>

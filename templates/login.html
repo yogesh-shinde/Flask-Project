@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Animated Login Form</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/animated_style.css')}}"
+    />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script src="static/js/login_validation.js"></script> -->
+
+    <!-- alert  -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script type="text/javascript">
+      function login_validation() {
+        var uname = document.log.txtuname.value;
+        var pwd = document.log.txtpassword.value;
+
+        var valid = true;
+        if (uname == null || uname == "") {
+          swal("Please enter your user name!");
+          // uname.focus();
+          return (valid = false);
+        }
+        if (pwd == null || pwd == "") {
+          swal("Please enter your password!");
+          // pwd.focus();
+          return (valid = false);
+        }
+        return valid;
+      }
+    </script>
+  </head>
+  <body>
+    <form class="login-form" action="/log" method="post" name="log">
+      <h1>Login Form</h1>
+      <div class="txtb">
+        <input type="text" name="txtuname" id="uname" required />
+        <span data-placeholder="Username"></span>
+      </div>
+      <div class="txtb">
+        <input type="password" name="txtpassword" id="pwd" required />
+        <span data-placeholder="Password"></span>
+      </div>
+
+      <button type="submit" onclick="login_validation()" class="logbtn">
+        Login
+      </button>
+      <!-- <input
+        type="button"
+        class="logbtn"
+        name="btnSubmit"
+        onclick="login_validation()"
+        value="Login"
+      /> -->
+
+      <div class="bottom-txt">
+        Don't have account? <a href="/reg">Sign up</a>
+      </div>
+    </form>
+    <script type="text/javascript">
+      $(".txtb input").on("focus", function() {
+        $(this).addClass("focus");
+      });
+      $(".txtb input").on("blur", function() {
+        if ($(this).val() == "") $(this).removeClass("focus");
+      });
+    </script>
+  </body>
+</html>

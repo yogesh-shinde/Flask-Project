@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title></title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/update.css')}}"
+    />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script type="text/javascript">
+      function update_validation() {
+        var name = document.upd.txtUename.value;
+        var uname = document.upd.txtUuname.value;
+        var pwd = document.upd.txtUpassword.value;
+        var addr = document.upd.txtUaddr.value;
+
+        if (name == null || name == "") {
+          alert("Please enter your name!");
+          return false;
+        } else if (uname == null || uname == "") {
+          alert("Please enter your user name!");
+          return false;
+        } else if (pwd == null || pwd == "") {
+          alert("Please enter your password!");
+          return false;
+        } else if (addr == null || addr == "") {
+          alert("Please enter your address!");
+          return false;
+        } else {
+          // var bt = document.getElementById("bb");
+          // bt.disabled = false;
+        }
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <form class="login-form" name="upd" action="/updatedata" method="POST">
+      <h1>Update Form</h1>
+      <div>
+        <input type="hidden" name="txtUeno" value="{{ e.eno }}" required />
+      </div>
+      <div class="txtb">
+        <input type="text" name="txtUename" value="{{ e.ename }}" required />
+      </div>
+      <div class="txtb">
+        <input type="text" name="txtUuname" value="{{ e.uname }}" required />
+      </div>
+      <div class="txtb">
+        <input
+          type="password"
+          name="txtUpassword"
+          value="{{ e.pwd }}"
+          required
+        />
+      </div>
+      <div class="txtb">
+        <input type="text" name="txtUaddr" value="{{ e.addr }}" required />
+      </div>
+
+      <button type="submit" class="logbtn">Update</button>
+      <!-- <input type="submit" class="logbtn" value="Update" /> -->
+    </form>
+    <script type="text/javascript">
+      $(".txtb input").on("focus", function() {
+        $(this).addClass("focus");
+      });
+      $(".txtb input").on("blur", function() {
+        if ($(this).val() == "") $(this).removeClass("focus");
+      });
+    </script>
+  </body>
+</html>

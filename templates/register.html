@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title></title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/update.css')}}"
+    />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script type="text/javascript">
+      function register_validation() {
+        // document.getElementById("bb").disabled = true;
+
+        var name = document.reg.txtname.value;
+        var uname = document.reg.txtusername.value;
+        var pwd = document.reg.txtpassword.value;
+        var addr = document.reg.txtaddress.value;
+        var bt = document.getElementById("bb");
+
+        if (name == null || name == "") {
+          alert("Please enter your name!");
+          //bt.disabled = true;
+          return false;
+        } else if (uname == null || uname == "") {
+          alert("Please enter your user name!");
+          return false;
+        } else if (pwd == null || pwd == "") {
+          alert("Please enter your password!");
+          return false;
+        } else if (addr == null || addr == "") {
+          alert("Please enter your address!");
+          return false;
+        } else {
+          // var bt = document.getElementById("bb");
+          // bt.disabled = false;
+        }
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <form class="login-form" name="reg" action="" method="post">
+      <h1>Register Form</h1>
+      <div class="txtb">
+        <input type="text" name="txtname" required />
+        <span data-placeholder="Name"></span>
+      </div>
+      <div class="txtb">
+        <input type="text" name="txtusername" required />
+        <span data-placeholder="User Name"></span>
+      </div>
+      <div class="txtb">
+        <input type="password" name="txtpassword" required />
+        <span data-placeholder="Password"></span>
+      </div>
+      <div class="txtb">
+        <input type="text" name="txtaddress" required />
+        <span data-placeholder="Address"></span>
+      </div>
+      <button type="submit" class="logbtn" onclick="register_validation()">
+        Register
+      </button>
+      <!-- <input
+        type="button"
+        class="logbtn"
+        id="bb"
+        onclick="register_validation()"
+        value="Register"
+      /> -->
+    </form>
+    <script type="text/javascript">
+      $(".txtb input").on("focus", function() {
+        $(this).addClass("focus");
+      });
+      $(".txtb input").on("blur", function() {
+        if ($(this).val() == "") $(this).removeClass("focus");
+      });
+    </script>
+  </body>
+</html>
